@@ -1,8 +1,6 @@
-// Register.js
 import React, { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { Link } from 'react-router-dom';
-
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -12,7 +10,31 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center">
+    <div className=" min-h-screen bg-gray-100 flex flex-col items-center justify-center">
+      {/* Logo Image */}
+      {/* Logo Image */}
+            <div className="absolute top-6 left-6">
+              <Link to="/">
+                <img
+                  src="/kalplogo.svg" // Replace with the actual path to your image
+                  alt="Kalp Studio Logo"
+                  className=" ml-4 w-32 h-auto"
+                />
+              </Link>
+            </div>
+      
+            {/* Links */}
+            <div className="absolute top-6 right-6 space-x-6 text-gray-500">
+              <a href="#" className="hover:underline">
+                Help
+              </a>
+              <a href="#" className="hover:underline">
+                Privacy Policy
+              </a>
+              <a href="#" className="hover:underline">
+                Terms
+              </a>
+            </div>
       <div className="bg-white shadow-lg rounded-lg w-full max-w-sm p-8">
         {/* Header */}
         <h2 className="text-2xl font-bold text-gray-900 text-center">
@@ -32,7 +54,6 @@ const Register = () => {
               className="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               required
             />
-            
           </div>
 
           {/* Email Input */}
@@ -43,12 +64,10 @@ const Register = () => {
               className="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               required
             />
-            <button
-              type="button"
-              className="absolute right-3 top-3 text-indigo-600 hover:underline text-sm"
-            >
-              Verify Email
-            </button>
+           
+           
+           
+
           </div>
 
           {/* Password Input */}
@@ -91,7 +110,7 @@ const Register = () => {
         </p>
         <p className="text-center text-gray-500 text-sm mt-6">
           Already have an account?{" "}
-          <Link to ="/login" className="text-indigo-600 font-medium hover:underline">
+          <Link to="/login" className="text-indigo-600 font-medium hover:underline">
             Login
           </Link>
         </p>

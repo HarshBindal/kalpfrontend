@@ -1,3 +1,4 @@
+import { div } from "framer-motion/client";
 import React, { useState, useEffect } from "react";
 
 const HeroSection = () => {
@@ -18,8 +19,10 @@ const HeroSection = () => {
   }, [currentIndex, texts]);
 
   return (
-    <div className="bg-slate-200 flex items-center justify-center">
-      <div className="container mx-auto px-7 lg:flex items-center">
+     <div className="bg-[#F1F2FB]">
+      <div className="container mx-auto px-8">
+    <div className=" h-[753px] mt-[18px]">
+      <div className="lg:flex items-center justify-between">
         {/* Left Content */}
         <div className="lg:w-1/2">
           <div className="flex items-center space-x-3 mb-4">
@@ -29,33 +32,35 @@ const HeroSection = () => {
               {currentText} {/* Dynamically updating text */}
             </span>
           </div>
-          <h1 className="text-5xl font-bold text-gray-800 leading-tight mb-6">
+          <h1 className="text-[64px] font-bold text-gray-800 leading-tight mb-6">
             <span className="text-purple-600">Simplify</span> blockchain
             development with Kalp Studio.
           </h1>
-          <p className="text-gray-600 text-lg mb-8">
+          <p className="text-gray-600 text-[24px] mb-8">
             Swiftly create and manage digital assets, transforming complexity
             into seamless efficiency.
           </p>
-          <div className="flex space-x-4">
-            <button className="px-6 py-3 border border-black text-black rounded-lg text-lg hover:bg-[#CBFD13] hover:text-black">
+          <div className="flex space-x-4 ">
+            <button className=" w-[152px] h-[54px]  py-3 border font-bold border-black text-black rounded-lg text-[13px] hover:bg-[#CBFD13] hover:text-black">
               Talk to an Expert
             </button>
-            <button className="px-6 py-3 bg-black text-white rounded-lg text-lg hover:bg-[#CBFD13] hover:text-black">
+            <button className="px-6 py-3 w-[154px] h-[54px] font-bold bg-black text-white rounded-lg text-[13px] hover:bg-[#CBFD13] hover:text-black">
               Start Building
             </button>
           </div>
         </div>
 
         {/* Right Content (Image/Graphic) */}
-        <div className="lg:w-1/2 mt-10 lg:mt-0 flex justify-center">
+        <div className="mt-10">
           <img
             src="/bg-image1.webp" // Replace with your image path
             alt="Blockchain Illustration"
-            className="w-3/4"
+            className=" justify-end"
           />
         </div>
       </div>
+    </div>
+    </div>
     </div>
   );
 };

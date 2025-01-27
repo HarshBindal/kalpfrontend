@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { Link } from 'react-router-dom';
 
-
 const SignInPage = () => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -11,12 +10,16 @@ const SignInPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center">
-      {/* Header */}
+    <div className=" min-h-screen bg-gray-100 flex flex-col items-center justify-center">
+      {/* Logo Image */}
       <div className="absolute top-6 left-6">
-        <h1 className="text-2xl font-bold text-gray-900">
-          KALP <span className="text-indigo-600">STUDIO</span>
-        </h1>
+        <Link to="/">
+          <img
+            src="/kalplogo.svg" // Replace with the actual path to your image
+            alt="Kalp Studio Logo"
+            className=" ml-4 w-32 h-auto"
+          />
+        </Link>
       </div>
 
       {/* Links */}
@@ -87,7 +90,7 @@ const SignInPage = () => {
         {/* Register */}
         <p className="text-center text-gray-500 text-sm mt-6">
           Don’t have an account?{" "}
-          <Link to= "/signup" className="text-indigo-600 font-medium hover:underline">
+          <Link to="/signup" className="text-indigo-600 font-medium hover:underline">
             Register Now
           </Link>
         </p>

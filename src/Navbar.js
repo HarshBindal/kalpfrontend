@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [dropdown, setDropdown] = useState(null);
+  const dropdownRef = useRef();
 
   const toggleDropdown = (section) => {
     if (dropdown === section) {
@@ -13,21 +14,41 @@ const Navbar = () => {
     }
   };
 
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setDropdown(null); // Close the dropdown if clicked outside
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-<nav className="bg-gray-300 shadow-md fixed top-0 left-0 w-full z-50 h-[78px]">
-<div className="container mx-auto px-4 flex justify-between items-center py-2">
+    <nav className="bg-[rgb(255,255,255,0.81)] backdrop-blur-[10.1px] fixed top-0 left-0 w-full z-50 h-[78px]">
+      <div className="container mx-auto px-8  flex justify-between items-center py-2">
         {/* Logo */}
         <div>
-          <img src="/kalplogo.svg" alt="Kalp Logo" className="pb-8" />
+          <img
+            src="/kalplogo.svg"
+            alt="Kalp Logo"
+            className="pb-6 w-[200px] h-[70px]"
+          />
         </div>
 
         {/* Menu */}
-        <div className="hidden md:flex space-x-6 relative pb-8">
+        <div
+          className="hidden md:flex space-x-[26px] w-[760px] h-[23px] text-[18px] text-[#060606] items-center justify-center relative pb-8"
+          ref={dropdownRef}
+        >
           {/* Dropdown for Products */}
           <div className="relative">
             <button
               onClick={() => toggleDropdown("products")}
-              className="text-black font-semibold text-[18px] flex items-center"
+              className="flex items-center"
             >
               Products
               <ChevronDownIcon className="ml-2 w-5 h-5" />
@@ -102,7 +123,7 @@ const Navbar = () => {
           <div className="relative">
             <button
               onClick={() => toggleDropdown("solutions")}
-              className="text-black font-semibold text-[18px] flex items-center"
+              className=" flex items-center"
             >
               Solutions
               <ChevronDownIcon className="ml-2 w-5 h-5" />
@@ -123,7 +144,7 @@ const Navbar = () => {
           </div>
 
           {/* Enterprise Section */}
-          <a href="#" className="text-black font-semibold text-[18px]">
+          <a href="#" className="">
             Enterprise
           </a>
 
@@ -131,7 +152,7 @@ const Navbar = () => {
           <div className="relative">
             <button
               onClick={() => toggleDropdown("company")}
-              className="text-black font-semibold text-[18px] flex items-center"
+              className=" text-[18px] flex items-center"
             >
               Company
               <ChevronDownIcon className="ml-2 w-5 h-5" />
@@ -155,7 +176,7 @@ const Navbar = () => {
           <div className="relative">
             <button
               onClick={() => toggleDropdown("developers")}
-              className="text-black font-semibold text-[18px] flex items-center"
+              className="text-[18px] flex items-center"
             >
               Developers
               <ChevronDownIcon className="ml-2 w-5 h-5" />
@@ -179,7 +200,7 @@ const Navbar = () => {
         {/* Buttons */}
         <div className="flex space-x-4 pr-3 pb-8">
           <Link to="/login">
-            <button className="border border-black text-black font-bold px-6 py-2 rounded-md w-[150px] h-[54px]">
+            <button className="border border-black font-bold px-6 py-2 rounded-md w-[150px] h-[54px]">
               Log in
             </button>
           </Link>

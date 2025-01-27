@@ -2,3 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 @import "@fortawesome/fontawesome-free/css/all.min.css";
+
+
+body, #root {
+    margin: 0;
+    padding: 0;
+    width: 100vw; /* Viewport width */
+    height: 100vh; /* Viewport height */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    
+}

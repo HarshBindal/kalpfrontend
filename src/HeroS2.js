@@ -27,31 +27,22 @@ function App() {
   };
 
   return (
-    <div className="p-8 ">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="container mx-auto px-8 py-10">
+      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* Main Feature Card */}
         <div className="col-span-2 row-span-2 relative overflow-hidden rounded-3xl h-[600px]">
-          {/* Slider Background */}
           <div
-            className={`absolute inset-0 ${slides[ currentSlide].bg} bg-cover bg-center`}
-            style={{
-              clipPath:
-                "path('M0,0 L100%,0 L100%,90% C75%,100% 25%,100% 0,90% Z')",
-            }}
+            className={`absolute inset-0 ${slides[currentSlide].bg} bg-cover bg-center `}
           >
-            <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+            <div className="absolute inset-0 bg-black/50"></div>
           </div>
 
-          {/* Slider Content */}
           <div className="relative h-full p-8 flex flex-col justify-between">
-            <div>
-              <h1 className="text-4xl font-bold text-white mt-4 mb-2">
-                {slides[currentSlide].title}
-              </h1>
-            </div>
+            <h1 className="text-4xl font-bold text-white mt-4 mb-2">
+              {slides[currentSlide].title}
+            </h1>
           </div>
 
-          {/* Navigation Arrows and Dots */}
           <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex items-center space-x-4 z-20">
             <button
               onClick={prevSlide}
@@ -80,48 +71,53 @@ function App() {
         </div>
 
         {/* Stats Card */}
-        <div className="bg-[#CBFD1326] rounded-3xl p-8 space-y-6 flex flex-col justify-between h-[600px] ">
-          <div>
-            <h2 className="text-[64px] font-bold w-[248px] h-[87px]">90%</h2>
-            <p className="text-gray-600 text-[16px] w-[212px] h-[21px] mt-2">Reduction in cost & time</p>
-          </div>
-          <div>
-            <h2 className="text-[64px] font-bold w-[248px] h-[87px]">10x</h2>
-            <p className="text-[16px] text-gray-600 mt-2">Faster deployments</p>
-          </div>
-          <div>
-            <h2 className="text-[64px] font-bold w-[248px] h-[87px]">20+</h2>
-            <p className="text-[16px] text-gray-600 w-[212px] h-[21px] mt-2">DApps</p>
-          </div>
+        <div className="bg-[#CBFD1326] rounded-3xl p-8 space-y-6 flex flex-col justify-between h-[600px]">
+          {[
+            { label: "Reduction in cost & time", value: "90%" },
+            { label: "Faster deployments", value: "10x" },
+            { label: "DApps", value: "20+" },
+          ].map((stat, index) => (
+            <div key={index}>
+              <h2 className="text-[64px] font-bold">{stat.value}</h2>
+              <p className="text-gray-600 text-[16px] mt-2">{stat.label}</p>
+            </div>
+          ))}
         </div>
 
         {/* Feature Cards */}
-        <div className="flex flex-col gap-[24px] h-[600px]">
-          <div className="bg-indigo-50 rounded-3xl p-8 flex flex-col justify-between h-[288px]">
-            <div className="flex justify-start items-start">
-              <div>
-                <h3 className="text-2xl font-bold text-indigo-600">
-                  Elevate with Kalp Chain
+        <div className="flex flex-col gap-6 h-[600px]">
+          {[
+            {
+              title: "Elevate with Kalp Chain",
+              bg: "bg-indigo-50",
+              textColor: "text-indigo-600",
+              borderColor: "border-indigo-200",
+              hoverBg: "hover:bg-indigo-100",
+            },
+            {
+              title: "Integrate Kalp Wallet",
+              bg: "bg-gray-900",
+              textColor: "text-white",
+              borderColor: "border-gray-700",
+              hoverBg: "hover:bg-gray-800",
+            },
+          ].map((feature, index) => (
+            <div
+              key={index}
+              className={`${feature.bg} rounded-3xl p-8 flex flex-col justify-between h-[288px]`}
+            >
+              <div className="flex items-center justify-between">
+                <h3 className={`text-2xl font-bold ${feature.textColor}`}>
+                  {feature.title}
                 </h3>
+                <button
+                  className={`p-2 rounded-full border ${feature.borderColor} ${feature.hoverBg}`}
+                >
+                  <ArrowRight className={`w-5 h-5 ${feature.textColor}`} />
+                </button>
               </div>
-              <button className="p-2 rounded-full border border-indigo-200 hover:bg-indigo-100 ml-auto">
-                <ArrowRight className="w-5 h-5 text-indigo-600" />
-              </button>
             </div>
-          </div>
-
-          <div className="bg-gray-900 rounded-3xl p-8 flex flex-col justify-between  h-[288px]">
-            <div className="flex justify-start items-end">
-              <div>
-                <h3 className="text-2xl font-bold text-white">
-                  Integrate Kalp Wallet
-                </h3>
-              </div>
-              <button className="p-2 rounded-full border border-gray-700 hover:bg-gray-800 ml-auto">
-                <ArrowRight className="w-5 h-5 text-white" />
-              </button>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
